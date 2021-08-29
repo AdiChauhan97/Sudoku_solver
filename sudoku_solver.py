@@ -9,6 +9,7 @@ grid =[
         [1, 2, 0, 0, 0, 7, 4, 0, 0],
         [0, 4, 9, 2, 0, 6, 0, 0, 7]
     ]
+
 #Print Board
 def matrix_print(matrix):
     for i in range(0,9,3):
@@ -21,6 +22,7 @@ def matrix_print(matrix):
                     print(" ")
         print("---------------------------")
 
+
 def no_conflict(matrix, row_pos, col_pos, num):
         
     #checks for conflict in rows and columns
@@ -32,7 +34,7 @@ def no_conflict(matrix, row_pos, col_pos, num):
         if num == col:
             return False
     
-    #checks for conflict in surrounding square
+    #checks for conflict in surrounding 3X3 square
     row_sqr = (row_pos // 3) * 3   
     col_sqr = (col_pos // 3) * 3
 
@@ -41,6 +43,7 @@ def no_conflict(matrix, row_pos, col_pos, num):
             if matrix[row_sqr+i][col_sqr+j] == num:
                 return False 
     return True
+
 
 #recursive backtracking function to solve the matrix
 def solver(matrix):
@@ -56,8 +59,11 @@ def solver(matrix):
                 return
     matrix_print(matrix)
 
-print("Initial Matrix:")
-matrix_print(grid)
-print("\nSolved Matrix:")
-solver(grid)
 
+def main(matrix):
+    print("Initial Matrix:")
+    matrix_print(matrix)
+    print("\nSolved Matrix:")
+    solver(matrix)
+
+main(grid)
